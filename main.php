@@ -6,6 +6,19 @@
 **/
 
 require_once ('classes/Student.php');
-require_once ('functions.php');
+
+class Main {
+
+    function __construct() {
+
+        $this-> private function run_file() {
+
+            
+
+        }
+
+    }
+
+}
 
 ?>

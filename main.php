@@ -11,11 +11,14 @@ class Main {
 
     function __construct() {
 
-        $this-> private function run_file() {
+        $this-> run_file();
 
-            
+    }
 
-        }
+    private function run_file() {
+
+        // Read CSV and make array
+        $students = array_map('str_getcsv', file('./csv/students.csv'));
 
     }
 

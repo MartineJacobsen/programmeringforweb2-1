@@ -21,32 +21,32 @@
         }
 
         // method for getting student number
-        function getStudentNr() {
+        public function getStudentNr() {
             return $this->student_nr;
         }
 
         // method for getting name
-        function getName() {
+        public function getName() {
             return $this->name;
         }
 
         // method for getting surname
-        function getSurname() {
+        public function getSurname() {
             return $this->surname;
         }
 
         // method for getting birthdate
-        function getBirthdate() {
+        public function getBirthdate() {
             return $this->birthdate;
         }
 
         // method for getting courses completed
-        function getCoursesCompleted() {
+        public function getCoursesCompleted() {
             return $this->courses_completed;
         }
 
         // method for getting courses completed
-        function getCoursesFailed() {
+        public function getCoursesFailed() {
             return $this->courses_failed;
         }
 

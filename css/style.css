@@ -1,0 +1,104 @@
+/*
+ *  Martine Jacobsen
+ *  Stud.nr: 141715
+**/
+
+/** CONTENT **
+        - General
+        - Header + nav
+        - General appearance
+*/
+
+/* GENERAL */
+html,
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    background-color: #EDEDED;
+    color: #3D3D3D;
+}
+
+/* HEADER + NAV */
+header {
+    background-color: #FFF;
+    color: #3D3D3D;
+}
+header h2 {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+.nav-link {
+    margin: 0 1rem;
+    padding: 0;
+}
+.nav-link:after {
+    content: '';
+    display: block;
+    margin-top: 1rem;
+    height: 2px;
+    width: 0;
+    background: transparent;
+    transition: width .25s ease, background-color .25s ease;
+  }
+.nav-link:hover:after {
+    width: 100%;
+    background: #3D3D3D;
+}
+a {
+    color: #246F64;
+    font-weight: 600;
+}
+a:link,
+a:active {
+    color: #246F64;
+    transition: color .25s ease;
+}
+a:hover,
+a:focus {
+    color: #3D3D3D;
+}
+
+/* TABLE */
+.table {
+    background-color: #FFF;
+}
+thead th {
+    font-weight: 600;
+}
+.table thead th {
+    border-top: 0;
+    border-bottom-color: #3D3D3D;
+}
+tbody {
+    position: relative;
+}
+th {
+    font-weight: 400;
+}
+tbody tr {
+    z-index: 1;
+    transition: color .25s ease, background-color .25s ease;
+}
+tbody tr th {
+    z-index: 2;
+}
+tbody tr:hover {
+    color: #FFF;
+    cursor: pointer;
+    background: #246F64;
+}
+
+/* GENERAL APPEARANCE */
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* MARGIN STYLES */
+.m-t-2 {
+    margin-top: 2rem;
+}
+
+/* PADDING STYLES */
+.p-t-2 {
+    padding-top: 2rem;
+}

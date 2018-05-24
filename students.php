@@ -5,42 +5,48 @@
  *  Stud.nr: 141715
 **/
 
-include ('header.php');
-
 require_once ('main.php');
-require_once ('classes/Student.php');
+
+include ('header.php');
 
 ?>
 
 <div class="container">
 
     <div class="row">
-        <table class="table">
+        <h3 class="p-t-2">Registered students</h3>
+        <table class="table m-t-2">
           <thead>
-            <tr>
-              <th scope="col">Student Number</th>
+            <tr class="uppercase">
+              <th class="text-center" scope="col">Student #</th>
               <th scope="col">Name</th>
               <th scope="col">Surname</th>
               <th scope="col">Birthdate</th>
-              <th scope="col">Courses Completed</th>
-              <th scope="col">Courses Failed</th>
+              <th class="text-center" scope="col">Courses Completed</th>
+              <th class="text-center"scope="col">Courses Failed</th>
             </tr>
           </thead>
           <tbody>
-    <?php foreach ($main->getStudents() as $key => $Student) : ?>
-        <tr>
-            <?php if(property_exists($Student, 'student_nr')) : ?>
+    <?php foreach ($Students as $Student) : ?>
+            <tr onclick="window.location='#';">
+                <?php if(property_exists($Student, 'student_nr')) : ?>
+                    <td class="text-center"><?php echo $Student->getStudentNr(); ?></td>
+                    <td><?php echo $Student->getName(); ?></td>
+                    <td><?php echo $Student->getSurname(); ?></td>
+                    <td><?php echo date('d.m.Y', $Student->getBirthdate()); ?></td>
+                    <td class="text-center"><?php echo $Student->getCoursesCompleted(); ?></td>
+                    <td class="text-center"><?php echo $Student->getCoursesFailed(); ?></td>
+                <?php endif; ?>
+            </tr>
 
-                <th><?php echo $Student->getStudentNr(); ?></th>
-                <th><?php echo $Student->getName(); ?></th>
-                <th><?php echo $Student->getSurname(); ?></th>
-                <th><?php echo date('d.m.Y',$Student->getBirthdate()) ?></th>
-                <th><?php echo $Student->getCoursesCompleted(); ?></th>
-                <th><?php echo $Student->getCoursesFailed(); ?></th>
-
-            <?php endif; ?>
-        </div>
     <?php endforeach; ?>
+</tbody>
+</table>
+<div class="col-12">
+    <p>
+        Total number of students: <?php echo count($Students); ?>
+    </p>
+</div>
 </div>
 
 </div>

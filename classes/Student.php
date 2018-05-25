@@ -7,7 +7,7 @@
 
     class Student {
 
-        private $student_nr, $name, $surname, $birthdate, $courses_completed, $courses_failed, $gpa, $grades = [];
+        private $student_nr, $name, $surname, $birthdate, $courses_completed, $courses_failed, $grades = [];
 
         function __construct($student_nr, $name, $surname, $birthdate, $courses_completed, $courses_failed) {
 
@@ -17,7 +17,6 @@
             $this->birthdate            = $birthdate;
             $this->courses_completed    = $courses_completed;
             $this->courses_failed       = $courses_failed;
-            $this->gpa                  = $gpa;
 
         }
 
@@ -43,12 +42,32 @@
 
         // method for getting courses completed
         public function getCoursesCompleted() {
-            return $this->courses_completed;
+
+            $courses_completed = 0;
+
+            foreach($this->grades as $grade) {
+
+                if ($grade->getGrade() > 0) {
+                    $courses_completed++;
+                }
+            }
+
+            return $courses_completed;
+
         }
 
         // method for getting courses completed
         public function getCoursesFailed() {
-            return $this->courses_failed;
+            $courses_failed = 0;
+
+            foreach($this->grades as $grade) {
+
+                if ($grade->getGrade() == 0) {
+                    $courses_failed++;
+                }
+            }
+
+            return $courses_failed;
         }
 
         // method for register grades for student
@@ -62,20 +81,20 @@
         }
 
         // method for calculating each student's GPA
-        public function calcGPA() {
+        public function getGPA() {
 
             $tot_gradepoints    = 0;
             $total_credits      = 0;
 
             foreach ($this->grades as $grade) {
                 $credit = $grade->getCourse()->getNumberofCredits();
-                $gradepoints = $grade * $credit;
-                $tot_gradepoints += $gradepoints:
+                $gradepoints = $grade->getGrade() * $credit;
+                $tot_gradepoints += $gradepoints;
                 $total_credits += $credit;
             }
 
             $gpa = $tot_gradepoints / $total_credits;
-            return $gpa;
+            return round($gpa, 2);
 
         }
 

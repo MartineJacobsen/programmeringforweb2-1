@@ -14,9 +14,20 @@ include ('header.php');
 <div class="container">
     <div class="row">
 
-<?php foreach ($Instructors as $Instructor) : ?>
-<?php $instructor_name = $Instructor->get_InstructorName(); ?>
-        <div class="col-4">
+<?php
+
+    // array to store Instructor names
+    $duplicats = [];
+
+    foreach ($Instructors as $Instructor) :
+        $instructor_name = $Instructor->get_InstructorName();
+
+        // check for duplicates of Instructor name
+        if(in_array($instructor_name, $duplicats)) continue;
+        $duplicats[] = $instructor_name;
+
+    ?>
+        <div class="col-6">
         <h2 class="m-t-2"><?php echo $Instructor->get_InstructorName(); ?></h2>
         <table class="table">
           <thead>
@@ -27,12 +38,13 @@ include ('header.php');
           </thead>
           <tbody>
 
-            <?php foreach ($Courses as $Course) : ?>
+            <?php foreach ($Courses as $Course) : // looping throug all Courses objects, definding each object as a single ?>
                 <?php
+                    // create variable for getting Instructor name
                     $instructorname = $Course->getInstructorName();
                 ?>
                 <tr>
-                    <?php if ($instructor_name == $instructorname) : ?>
+                    <?php if ($instructor_name == $instructorname) : // check if value exist in both Instructor and Course ?>
                     <td class="text-center"><?php echo $Course->getCourseCode(); ?></td>
                     <td class="text-center"><?php echo $Course->getCourseName(); ?></td>
 

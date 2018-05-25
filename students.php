@@ -24,7 +24,8 @@ include ('header.php');
               <th scope="col">Birthdate</th>
               <th class="text-center" scope="col">Courses Completed</th>
               <th class="text-center"scope="col">Courses Failed</th>
-              <th class="text-center"scope="col">Grades</th>
+              <th class="text-center"scope="col">GPA</th>
+              <th class="text-center"scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -37,7 +38,20 @@ include ('header.php');
                     <td><?php echo date('d.m.Y', $Student->getBirthdate()); ?></td>
                     <td class="text-center"><?php echo $Student->getCoursesCompleted(); ?></td>
                     <td class="text-center"><?php echo $Student->getCoursesFailed(); ?></td>
-                    <td class="text-center"><?php echo $Student->getGrades(); ?></td>
+                    <td class="text-center"><?php echo $Student->getGPA(); ?></td>
+                    <td class="text-center">
+                        <?php
+                            if ($Student->getGPA() < 2) {
+                                echo 'unsatisfactory';
+                            } elseif ($Student->getGPA() >= 2 && $Student->getGPA() < 3) {
+                                echo 'satisfactory';
+                            } elseif ($Student->getGPA() >= 3 && $Student->getGPA() < 4) {
+                                echo 'honour';
+                            } else {
+                                echo 'high honour';
+                            }
+                        ?>
+                    </td>
                 <?php endif; ?>
             </tr>
 

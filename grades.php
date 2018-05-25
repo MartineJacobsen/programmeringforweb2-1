@@ -33,8 +33,6 @@ include ('header.php');
 
         <?php
 
-            $credit = 0;
-            $tot_gradepoints = 0;
             foreach ($Courses as $Course) : ?>
 
             <tr>
@@ -50,10 +48,6 @@ include ('header.php');
 
                 <?php
                     if ($studentnr == $studentno and $coursecode == $courseno) :
-                    $credit += intval($numberofcredits);
-                    intval($getgrade);
-                    $gradepoints = $numberofcredits * $getgrade;
-                    $tot_gradepoints += $gradepoints;
 
                 ?>
 
@@ -61,7 +55,7 @@ include ('header.php');
                     <td class="text-center"><?php echo $Course->getCourseName(); ?></td>
                     <td class="text-center"><?php echo $numberofcredits; ?></td>
                     <td class="text-center"><?php echo $getgrade; ?></td>
-                    <td class="text-center"><?php echo $gradepoints; ?></td>
+                    <td class="text-center"><?php echo $getgrade * $numberofcredits; ?></td>
 
 
                 <?php endif; ?>
@@ -76,14 +70,6 @@ include ('header.php');
 </table>
 
 </div>
-<?php
-
-    $gpa = $tot_gradepoints / $credit;
-
-?>
-
-<p>Total number of credits: <?php echo $credit; ?> | Total number of grade points: <?php echo $tot_gradepoints; ?> | GPA: <?php echo round($gpa, 2); ?></p>
-
 
 <?php endforeach; ?>
 

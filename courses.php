@@ -14,7 +14,7 @@ include ('header.php');
 <div class="container">
 
     <div class="row">
-        <h3 class="p-t-2">Registered students</h3>
+        <h3 class="p-t-2">Available Courses</h3>
         <table class="table m-t-2">
           <thead>
             <tr class="uppercase">

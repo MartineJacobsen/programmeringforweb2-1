@@ -95,6 +95,7 @@ class Main {
             // no unique value to use as key
             $this->instructors[$key] = new Instructor($instructor[0],$instructor[1]);
 
+            // assign courses to instructor
             $this->instructors[$key]->assignCourse($this->courses[$instructor[0]]);
 
         }

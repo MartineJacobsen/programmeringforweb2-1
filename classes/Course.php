@@ -16,7 +16,7 @@
             $this->year            = $year;
             $this->semester        = $semester;
             $this->instructor_name = $instructor_name;
-            $this->no_credits      = $no_credits;
+            $this->no_credits      = intval($no_credits);
 
         }
 

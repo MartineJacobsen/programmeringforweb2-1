@@ -7,7 +7,7 @@
 
     class Instructor {
 
-        private $courseCode, $instructorName;
+        private $courseCode, $instructorName, $courses = [];
 
         function __construct($courseCode, $instructorName) {
 
@@ -24,6 +24,11 @@
         // method for getting name
         public function get_InstructorName() {
             return $this->instructorName;
+        }
+
+        // method for assigning course
+        public function assignCourse($course) {
+            $this->courses[] = $course;
         }
 
     }

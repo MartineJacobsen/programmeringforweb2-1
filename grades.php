@@ -76,8 +76,14 @@ include ('header.php');
 </table>
 
 </div>
+<?php
 
-<p>Total number of credits: <?php echo $credit; ?> | Total number of grade points: <?php echo $tot_gradepoints; ?> | GPA: <?php echo $tot_gradepoints / $credit; ?></p>
+    $gpa = $tot_gradepoints / $credit;
+
+?>
+
+<p>Total number of credits: <?php echo $credit; ?> | Total number of grade points: <?php echo $tot_gradepoints; ?> | GPA: <?php echo round($gpa, 2); ?></p>
+
 
 <?php endforeach; ?>
 

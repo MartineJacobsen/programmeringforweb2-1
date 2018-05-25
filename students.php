@@ -24,6 +24,7 @@ include ('header.php');
               <th scope="col">Birthdate</th>
               <th class="text-center" scope="col">Courses Completed</th>
               <th class="text-center"scope="col">Courses Failed</th>
+              <th class="text-center"scope="col">Grades</th>
             </tr>
           </thead>
           <tbody>
@@ -36,6 +37,7 @@ include ('header.php');
                     <td><?php echo date('d.m.Y', $Student->getBirthdate()); ?></td>
                     <td class="text-center"><?php echo $Student->getCoursesCompleted(); ?></td>
                     <td class="text-center"><?php echo $Student->getCoursesFailed(); ?></td>
+                    <td class="text-center"><?php echo $Student->getGrades(); ?></td>
                 <?php endif; ?>
             </tr>
 

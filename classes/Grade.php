@@ -13,7 +13,7 @@
 
             $this->studentno = $studentno;
             $this->courseno  = $courseno;
-            $this->grade     = $grade;
+            $this->grade     = intval($grade);
 
         }
 
@@ -30,6 +30,16 @@
         // method for getting grade
         public function getGrade() {
             return $this->grade;
+        }
+
+        // method for setting course for a grade
+        public function setCourse($course) {
+            $this->course = $course;
+        }
+
+        // method for getting course for a grade
+        public function getCourse() {
+            return $this->course;
         }
 
     }

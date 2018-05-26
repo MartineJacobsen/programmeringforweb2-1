@@ -42,6 +42,15 @@
             return $this->course;
         }
 
+        public function getGradepoints() {
+
+            $credit = $this->getCourse()->getNumberofCredits();
+            $gradepoints = $this->getGrade() * $credit;
+
+            return $gradepoints;
+
+        }
+
     }
 
 ?>

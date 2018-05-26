@@ -33,12 +33,6 @@ class Main {
 
     }
 
-    public function getGrades() {
-
-        return $this->grades;
-
-    }
-
     public function getInstructors() {
 
         return $this->instructors;
@@ -109,7 +103,6 @@ $main = new Main();
 // declare variables for getting objects
 $Students = $main->getStudents();
 $Courses = $main->getCourses();
-$Grades = $main->getGrades();
 $Instructors = $main->getInstructors();
 
 ?>

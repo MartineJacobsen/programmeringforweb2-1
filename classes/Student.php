@@ -14,7 +14,7 @@
             $this->student_nr           = $student_nr;
             $this->name                 = $name;
             $this->surname              = $surname;
-            $this->birthdate            = $birthdate;
+            $this->birthdate            = date('d.m.Y', $birthdate);
             $this->courses_completed    = $courses_completed;
             $this->courses_failed       = $courses_failed;
 
@@ -58,16 +58,7 @@
 
         // method for getting courses completed
         public function getCoursesFailed() {
-            $courses_failed = 0;
-
-            foreach($this->grades as $grade) {
-
-                if ($grade->getGrade() == 0) {
-                    $courses_failed++;
-                }
-            }
-
-            return $courses_failed;
+            return count($this->grades) - $this->getCoursesCompleted();
         }
 
         // method for register grades for student
@@ -80,7 +71,7 @@
             return $this->grades;
         }
 
-        // method for calculating each student's GPA
+        // method for calculating and returning each student's GPA
         public function getGPA() {
 
             $tot_gradepoints    = 0;
@@ -95,6 +86,25 @@
 
             $gpa = $tot_gradepoints / $total_credits;
             return round($gpa, 2);
+
+        }
+
+        // method for calculating and returning each student's status
+        public function getStatus() {
+
+            $gpa = $this->getGPA();
+
+            if ($gpa < 2) {
+                $status = 'Unsatisfactory';
+            } elseif ($gpa >= 2 && $gpa < 3) {
+                $status = 'Satisfactory';
+            } elseif ($gpa >= 3 && $gpa < 4) {
+                $status = 'Honour';
+            } else {
+                $status = 'High Honour';
+            }
+
+            return $status;
 
         }
 

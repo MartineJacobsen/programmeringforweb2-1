@@ -48,7 +48,7 @@ class Main {
         foreach ($students as $key => $student) {
 
             // assign first value of array as key (Student Number)
-            $this->students[$student[0]] = new Student($student[0],$student[1],$student[2],$student[3],$student[4],$student[5]);
+            $this->students[$student[0]] = new Student($student[0],$student[1],$student[2],$student[3]);
 
         }
 
@@ -73,10 +73,13 @@ class Main {
             $this->grades[$key] = new Grade($grade[0],$grade[1],$grade[2]);
 
             // assign grades to correct student with identifying value (Student Number) from grades
-            $this->students[$grade[0]]->registerGrades($this->grades[$key]);
+            $this->students[$grade[0]]->setGrades($this->grades[$key]);
 
             // set which course grade is registered for with identifying value (Course Code) from grades
             $this->grades[$key]->setCourse($this->courses[$grade[1]]);
+
+            // set student to course
+            $this->courses[$grade[1]]->setStudents($this->students[$grade[0]]);
 
         }
 
@@ -90,7 +93,7 @@ class Main {
             $this->instructors[$key] = new Instructor($instructor[0],$instructor[1]);
 
             // assign courses to instructor
-            $this->instructors[$key]->assignCourse($this->courses[$instructor[0]]);
+            $this->instructors[$key]->setCourses($this->courses[$instructor[0]]);
 
         }
 

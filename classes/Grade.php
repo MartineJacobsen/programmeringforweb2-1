@@ -13,7 +13,7 @@
 
             $this->studentno = $studentno;
             $this->courseno  = $courseno;
-            $this->grade     = intval($grade);
+            $this->grade     = $grade;
 
         }
 
@@ -22,14 +22,20 @@
             return $this->studentno;
         }
 
-        // method for getting student number from grade
+        // method for getting course number from which course grade is given
         public function getCourseNo() {
             return $this->courseno;
         }
 
-        // method for getting grade
+        // method for getting grade given
         public function getGrade() {
             return $this->grade;
+        }
+
+        // returning letter grade to numeric grade (used for calculating i.e. GPA)
+        public function getNumGrade() {
+            return 102 - ord(strtolower($this->grade));
+
         }
 
         // method for setting course for a grade
@@ -45,7 +51,7 @@
         public function getGradepoints() {
 
             $credit = $this->getCourse()->getNumberofCredits();
-            $gradepoints = $this->getGrade() * $credit;
+            $gradepoints = $this->getNumGrade() * $credit;
 
             return $gradepoints;
 

@@ -24,9 +24,6 @@
                       <a class="nav-link" href="instructors.php">Instructors</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="grades.php">Grades</a>
-                    </li>
-                    <li class="nav-item">
                       <a class="nav-link" href="#">Data</a>
                     </li>
                 </ul>

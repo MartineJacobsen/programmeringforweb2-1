@@ -10,10 +10,10 @@ include ('header.php');
 ?>
 <main class="p-t-2">
     <div class="container">
-    <h2>Registered Students</h2>
+    <h2 class="text-center">Registered Students</h2>
 </div>
 
-		<div id="student-table" class="container">
+		<div id="student-table" class="container m-t-2">
 			<div class="row header-row">
 				<div class="col-1 text-center">#</div>
 				<div class="col">First Name</div>
@@ -24,8 +24,16 @@ include ('header.php');
                 <div class="col-1 text-center">GPA</div>
                 <div class="col-2">Status</div>
 			</div>
-            <?php foreach ($Students as $Student) :
+            <?php
+
+                usort($Students, function($a, $b) {
+                    return $a->getGPA() < $b->getGPA();
+                });
+
+                foreach ($Students as $Student) :
+
                 $id = $Student->getStudentNr();
+
             ?>
 			<div class="row accordion-toggle table-row" data-toggle="collapse" data-target="#collapse-<?php echo $id; ?>">
                 <div class="col-1 text-center"><?php echo $id; ?></div>
@@ -53,7 +61,7 @@ include ('header.php');
                         <div class="col"><?php echo $Grade->getCourseNo(); ?></div>
                         <div class="col"><?php echo $Grade->getCourse()->getCourseName(); ?></div>
                         <div class="col"><?php echo $Grade->getCourse()->getNumberofCredits(); ?></div>
-                        <div class="col"><?php echo $Grade->getGrade(); ?></div>
+                        <div class="col uppercase"><?php echo $Grade->getGrade(); ?></div>
                         <div class="col"><?php echo $Grade->getGradepoints(); ?></div>
                     </div>
                 </div>
@@ -61,6 +69,11 @@ include ('header.php');
 			</div>
             <?php endforeach; ?>
 		</div>
+        <div class="container">
+            <div class="row">
+                <p>Total number of students: <?php echo count($Students); ?></p>
+            </div>
+        </div>
         </main>
 
 

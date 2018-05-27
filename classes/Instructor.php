@@ -26,9 +26,14 @@
             return $this->instructorName;
         }
 
-        // method for assigning course
-        public function assignCourse($course) {
-            $this->courses[] = $course;
+        // method for assigning courses to instructor
+        public function setCourses($courses) {
+            $this->courses[] = $courses;
+        }
+
+        // method for getting courses assigned to instructor
+        public function get_Courses() {
+            return $this->courses;
         }
 
     }

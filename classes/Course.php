@@ -7,7 +7,7 @@
 
     class Course {
 
-        private $course_code, $course_name, $year, $semester, $instructor_name, $no_credits;
+        private $course_code, $course_name, $year, $semester, $instructor_name, $no_credits, $students = [];
 
         function __construct($course_code, $course_name, $year, $semester, $instructor_name, $no_credits) {
 
@@ -48,6 +48,14 @@
         // method for getting courses completed
         public function getNumberofCredits() {
             return $this->no_credits;
+        }
+
+        public function setStudents($students) {
+            $this->students[] = $students;
+        }
+
+        public function getStudents() {
+            return count($this->students);
         }
 
     }

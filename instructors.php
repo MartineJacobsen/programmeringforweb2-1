@@ -5,59 +5,44 @@
  *  Stud.nr: 141715
 **/
 
-require_once ('main.php');
-
 include ('header.php');
 
 ?>
 
-<div class="container">
-    <div class="row">
+<main class="p-t-2">
+    <div class="container">
+    <h2 class="text-center">Instructors</h2>
 
-<?php
 
-    // array to store Instructor names
-    $duplicats = [];
 
-    foreach ($Instructors as $Instructor) :
-        $instructor_name = $Instructor->get_InstructorName();
+<div class="row">
 
-        // check for duplicates of Instructor name
-        if(in_array($instructor_name, $duplicats)) continue;
-        $duplicats[] = $instructor_name;
 
-    ?>
-        <div class="col-6">
-        <h2 class="m-t-2"><?php echo $Instructor->get_InstructorName(); ?></h2>
-        <table class="table">
-          <thead>
-            <tr class="uppercase">
-              <th class="text-center" scope="col">Course Code</th>
-              <th class="text-center" scope="col">Course Name</th>
-            </tr>
-          </thead>
-          <tbody>
+<?php foreach ($Instructors as $Instructor) : ?>
+<div class="col-6">
+    <h3 class="text-center"><?php echo $Instructor->get_InstructorName(); ?></h3>
+			<div id="instructors-table" class="container-fluid m-t-2">
+                <div class="row header-row text-center">
+    				<div class="col">Course Code</div>
+    				<div class="col">Course Name</div>
+    			</div>
+                <?php foreach ($Instructor->get_Courses() as $Course) :
 
-            <?php foreach ($Courses as $Course) : // looping throug all Courses objects, definding each object as a single ?>
-                <?php
-                    // create variable for getting Instructor name
-                    $instructorname = $Course->getInstructorName();
+                    $id = $Course->getCourseCode();
+
                 ?>
-                <tr>
-                    <?php if ($instructor_name == $instructorname) : // check if value exist in both Instructor and Course ?>
-                    <td class="text-center"><?php echo $Course->getCourseCode(); ?></td>
-                    <td class="text-center"><?php echo $Course->getCourseName(); ?></td>
-
-                    <?php endif; ?>
-                </tr>
-            <?php endforeach; ?>
-    </tbody>
-</table>
+    			<div class="row table-row text-center">
+                    <div class="col"><?php echo $Course->getCourseCode(); ?></div>
+    				<div class="col"><?php echo $Course->getCourseName(); ?></div>
+    			</div>
+                <?php endforeach; ?>
+            </div>
 
 </div>
-<?php endforeach; ?>
+        <?php endforeach; ?>
 </div>
 </div>
+        </main>
 
 <?php
 

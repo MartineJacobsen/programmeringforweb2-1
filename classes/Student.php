@@ -7,16 +7,14 @@
 
     class Student {
 
-        private $student_nr, $name, $surname, $birthdate, $courses_completed, $courses_failed, $grades = [];
+        private $student_nr, $name, $surname, $birthdate, $grades = [];
 
-        function __construct($student_nr, $name, $surname, $birthdate, $courses_completed, $courses_failed) {
+        function __construct($student_nr, $name, $surname, $birthdate) {
 
             $this->student_nr           = $student_nr;
             $this->name                 = $name;
             $this->surname              = $surname;
             $this->birthdate            = date('d.m.Y', $birthdate);
-            $this->courses_completed    = $courses_completed;
-            $this->courses_failed       = $courses_failed;
 
         }
 
@@ -47,7 +45,7 @@
 
             foreach($this->grades as $grade) {
 
-                if ($grade->getGrade() > 0) {
+                if ($grade->getNumGrade() > 0) {
                     $courses_completed++;
                 }
             }
@@ -62,8 +60,8 @@
         }
 
         // method for register grades for student
-        public function registerGrades($grade) {
-            $this->grades[] = $grade;
+        public function setGrades($grades) {
+            $this->grades[] = $grades;
         }
 
         // method for getting registered grades for student
@@ -79,7 +77,7 @@
 
             foreach ($this->grades as $grade) {
                 $credit = $grade->getCourse()->getNumberofCredits();
-                $gradepoints = $grade->getGrade() * $credit;
+                $gradepoints = $grade->getNumGrade() * $credit;
                 $tot_gradepoints += $gradepoints;
                 $total_credits += $credit;
             }

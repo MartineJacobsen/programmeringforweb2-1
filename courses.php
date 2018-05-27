@@ -5,55 +5,46 @@
  *  Stud.nr: 141715
 **/
 
-require_once ('main.php');
-
 include ('header.php');
 
 ?>
 
-<div class="container">
-
-    <div class="row">
-        <h3 class="p-t-2">Available Courses</h3>
-        <table class="table m-t-2">
-          <thead>
-            <tr class="uppercase">
-              <th scope="col">Course Code</th>
-              <th scope="col">Course Name</th>
-              <th scope="col">Year</th>
-              <th scope="col">Semester</th>
-              <th scope="col">Instructor Name</th>
-              <th class="text-center" scope="col">Number of Credits</th>
-            </tr>
-          </thead>
-          <tbody>
-    <?php foreach ($Courses as $Course) : ?>
-            <tr onclick="window.location='#';">
-                <?php if(property_exists($Course, 'course_code')) : ?>
-                    <td><?php echo $Course->getCourseCode(); ?></td>
-                    <td><?php echo $Course->getCourseName(); ?></td>
-                    <td><?php echo $Course->getYear(); ?></td>
-                    <td><?php echo $Course->getSemester(); ?></td>
-                    <td><?php echo $Course->getInstructorName(); ?></td>
-                    <td class="text-center"><?php echo $Course->getNumberofCredits(); ?></td>
-                <?php endif; ?>
-            </tr>
-
-    <?php endforeach; ?>
-</tbody>
-</table>
-<div class="col-12">
-    <p>
-        Total number of courses: <?php echo count($Courses); ?>
-    </p>
-</div>
+<main class="p-t-2">
+    <div class="container">
+    <h2 class="text-center">Courses</h2>
 </div>
 
-</div>
+		<div id="courses-table" class="container m-t-2">
+			<div class="row header-row text-center">
+				<div class="col-2">Course Code</div>
+				<div class="col-2">Course Name</div>
+				<div class="col-1">Year</div>
+				<div class="col d-none d-sm-block text-left">Semester</div>
+                <div class="col d-none d-sm-block text-left">Instructor</div>
+                <div class="col-1 d-none d-sm-block">Credits</div>
+                <div class="col">No. of Students</div>
+			</div>
+            <?php foreach ($Courses as $Course) :
 
-<?php
+                $id = $Course->getCourseCode();
 
-include ('footer.php');
+            ?>
+			<div class="row table-row text-center">
+                <div class="col-2"><?php echo $id; ?></div>
+				<div class="col-2"><?php echo $Course->getCourseName(); ?></div>
+				<div class="col-1"><?php echo $Course->getYear(); ?></div>
+				<div class="col d-none d-sm-block text-left"><?php echo $Course->getSemester(); ?></div>
+                <div class="col d-none d-sm-block text-left"><?php echo $Course->getInstructorName(); ?></div>
+                <div class="col-1 d-none d-sm-block"><?php echo $Course->getNumberofCredits(); ?></div>
+                <div class="col"><?php echo $Course->getStudents(); ?></div>
+			</div>
+            <?php endforeach; ?>
+		</div>
+        <div class="container">
+            <div class="row">
+                <p>Total number of courses: <?php echo count($Courses); ?></p>
+            </div>
+        </div>
+        </main>
 
-
-?>
+<?php include ('footer.php'); ?>

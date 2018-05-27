@@ -104,6 +104,7 @@ tbody tr:hover {
 }
 
 /* TABLES */
+/* student table */
 #student-table {
     background-color: #FFF;
 }
@@ -119,9 +120,6 @@ tbody tr:hover {
 #student-table .table-row {
     padding: .75rem;
     border-top: 2px solid #EDEDED;
-}
-#student-table .table-row[data-target="#collapse-1"] {
-    border-top: 0;
 }
 #student-table .table-row:hover {
     background-color: #246F64;
@@ -148,4 +146,38 @@ tbody tr:hover {
 }
 .grade-row:last-of-type {
     border-bottom: 0;
+}
+/* courses table */
+#courses-table {
+    background-color: #FFF;
+}
+#courses-table .header-row {
+    padding: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 2px solid #3D3D3D;
+}
+#courses-table .header-row div {
+    margin-top: auto;
+}
+#courses-table .table-row {
+    padding: .75rem;
+    border-top: 2px solid #EDEDED;
+}
+/* instructors table */
+#instructors-table {
+    background-color: #FFF;
+}
+#instructors-table .header-row {
+    padding: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 2px solid #3D3D3D;
+}
+#instructors-table .header-row div {
+    margin-top: auto;
+}
+#instructors-table .table-row {
+    padding: .75rem;
+    border-top: 2px solid #EDEDED;
 }

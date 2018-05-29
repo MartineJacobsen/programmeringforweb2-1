@@ -1,6 +1,6 @@
-Course Code,Course Name,Course Year,Course Semester,Instructor Name,Number of Credits
-php123,PHP,2017,Fall,Cathrine Lund,10
-html456,HTML,2018,Spring,Ketil Ketilsen,5
-css789,CSS,2018,Spring,Marie Kittelsen,5
-js123,JavaScript,2018,Fall,Victoria Hodt,10
-pro456,Programming,2019,Spring,Cathrine Lund,10
+Course Code,Course Name,Course Year,Course Semester,Number of Credits
+php123,PHP,2017,Fall,10
+html456,HTML,2018,Spring,5
+css789,CSS,2018,Spring,5
+js123,JavaScript,2018,Fall,10
+pro456,Programming,2019,Spring,10

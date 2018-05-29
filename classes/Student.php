@@ -38,6 +38,16 @@
             return $this->birthdate;
         }
 
+        // method for register grades for student
+        public function setGrades($grades) {
+            $this->grades[] = $grades;
+        }
+
+        // method for getting registered grades for student
+        public function getGrades() {
+            return $this->grades;
+        }
+
         // method for getting courses completed
         public function getCoursesCompleted() {
 
@@ -59,31 +69,26 @@
             return count($this->grades) - $this->getCoursesCompleted();
         }
 
-        // method for register grades for student
-        public function setGrades($grades) {
-            $this->grades[] = $grades;
-        }
-
-        // method for getting registered grades for student
-        public function getGrades() {
-            return $this->grades;
-        }
-
         // method for calculating and returning each student's GPA
         public function getGPA() {
 
             $tot_gradepoints    = 0;
             $total_credits      = 0;
 
-            foreach ($this->grades as $grade) {
-                $credit = $grade->getCourse()->getNumberofCredits();
-                $gradepoints = $grade->getNumGrade() * $credit;
-                $tot_gradepoints += $gradepoints;
-                $total_credits += $credit;
+            // check if it has value (for new students with no grades registered)
+            if ($this->grades != NULL ) {
+                foreach ($this->grades as $grade) {
+                    $credit = $grade->getCourse()->getNumberofCredits();
+                    $gradepoints = $grade->getNumGrade() * $credit;
+                    $tot_gradepoints += $gradepoints;
+                    $total_credits += $credit;
+                }
+
+                $gpa = $tot_gradepoints / $total_credits;
+                return number_format($gpa, 2);
             }
 
-            $gpa = $tot_gradepoints / $total_credits;
-            return round($gpa, 2);
+            return false;
 
         }
 

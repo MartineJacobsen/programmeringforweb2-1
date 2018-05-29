@@ -7,16 +7,15 @@
 
     class Course {
 
-        private $course_code, $course_name, $year, $semester, $instructor_name, $no_credits, $students = [];
+        private $course_code, $course_name, $year, $semester, $no_credits, $students = [], $grades = [], $instructor;
 
-        function __construct($course_code, $course_name, $year, $semester, $instructor_name, $no_credits) {
+        function __construct($course_code, $course_name, $year, $semester, $no_credits) {
 
-            $this->course_code     = $course_code;
-            $this->course_name     = $course_name;
-            $this->year            = $year;
-            $this->semester        = $semester;
-            $this->instructor_name = $instructor_name;
-            $this->no_credits      = intval($no_credits);
+            $this->course_code      = $course_code;
+            $this->course_name      = $course_name;
+            $this->year             = $year;
+            $this->semester         = $semester;
+            $this->no_credits       = intval($no_credits);
 
         }
 
@@ -40,9 +39,14 @@
             return $this->semester;
         }
 
+        // method for set instructor
+        public function setInstructor($instructor) {
+            $this->instructor = $instructor;
+        }
+
         // method for getting courses completed
-        public function getInstructorName() {
-            return $this->instructor_name;
+        public function getInstructor() {
+            return $this->instructor;
         }
 
         // method for getting courses completed
@@ -50,12 +54,64 @@
             return $this->no_credits;
         }
 
-        public function setStudents($students) {
-            $this->students[] = $students;
+        public function setGrades($grades) {
+            $this->grades[] = $grades;
         }
 
-        public function getStudents() {
-            return count($this->students);
+        public function getGrades() {
+            return $this->grades;
+        }
+
+        public function getNumOfStudents() {
+            return count($this->grades);
+        }
+
+        public function getAverageGrade() {
+
+            $tot_gradesum = 0;
+
+            foreach ($this->grades as $grade) {
+
+                $gradesum = $grade->getNumGrade();
+                $tot_gradesum += $gradesum;
+
+            }
+
+            $avggradesum = number_format(($tot_gradesum / $this->getNumOfStudents()), 2);
+
+            if ($avggradesum < 1) {
+                return 'F';
+            } elseif ($avggradesum >= 1 && $avggradesum < 2) {
+                return 'E';
+            } elseif ($avggradesum >= 2 && $avggradesum < 3) {
+                return 'D';
+            } elseif ($avggradesum >= 3 && $avggradesum < 4) {
+                return 'C';
+            } elseif ($avggradesum >= 4 && $avggradesum < 5) {
+                return 'B';
+            } else {
+                return 'A';
+            }
+        }
+
+        public function getStudentsCompleted() {
+
+            $students_completed = 0;
+
+            foreach ($this->grades as $grade) {
+
+                if ($grade->getNumGrade() > 0) {
+                    $students_completed++;
+                }
+            }
+
+            return $students_completed;
+
+        }
+
+        public function getStudentsFailed() {
+            return count($this->grades) - $this->getStudentsCompleted();
+
         }
 
     }

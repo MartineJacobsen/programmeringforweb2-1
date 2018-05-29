@@ -13,7 +13,7 @@ require_once ('classes/Instructor.php');
 
 class Main {
 
-    public $students = [], $courses = [], $grades = [];
+    public $students = [], $courses = [], $grades = [], $instructors = [];
 
     function __construct() {
 
@@ -59,7 +59,7 @@ class Main {
         foreach ($courses as $key => $course) {
 
             // assign first value of array as key (Course Code)
-            $this->courses[$course[0]] = new Course($course[0],$course[1],$course[2],$course[3],$course[4],$course[5]);
+            $this->courses[$course[0]] = new Course($course[0],$course[1],$course[2],$course[3],$course[4]);
 
         }
 
@@ -78,8 +78,9 @@ class Main {
             // set which course grade is registered for with identifying value (Course Code) from grades
             $this->grades[$key]->setCourse($this->courses[$grade[1]]);
 
-            // set student to course
-            $this->courses[$grade[1]]->setStudents($this->students[$grade[0]]);
+            // set grade to course
+            $this->courses[$grade[1]]->setGrades($this->grades[$key]);
+
 
         }
 
@@ -89,11 +90,20 @@ class Main {
 
         foreach ($instructors as $key => $instructor) {
 
-            // no unique value to use as key
-            $this->instructors[$key] = new Instructor($instructor[0],$instructor[1]);
+            $test = array_keys($this->instructors);
+
+            // add new instructor if instructor name doesn't exist
+            if (!in_array($instructor[1], $test)) {
+                // no unique value to use as key
+                $this->instructors[$instructor[1]] = new Instructor($instructor[0],$instructor[1]);
+            }
 
             // assign courses to instructor
-            $this->instructors[$key]->setCourses($this->courses[$instructor[0]]);
+            $this->instructors[$instructor[1]]->setCourses($this->courses[$instructor[0]]);
+
+            // set instructor to course
+            $this->courses[$instructor[0]]->setInstructor($this->instructors[$instructor[1]]);
+
 
         }
 

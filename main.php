@@ -21,21 +21,31 @@ class Main {
 
     }
 
+    // get Student objects
     public function getStudents() {
 
         return $this->students;
 
     }
 
+    // get Course objects
     public function getCourses() {
 
         return $this->courses;
 
     }
 
+    // get Instructor objects
     public function getInstructors() {
 
         return $this->instructors;
+
+    }
+
+    // get Grade objects
+    public function getGrades() {
+
+        return $this->grades;
 
     }
 
@@ -94,7 +104,8 @@ class Main {
 
             // add new instructor if instructor name doesn't exist
             if (!in_array($instructor[1], $test)) {
-                // no unique value to use as key
+
+                // set instructor name as key
                 $this->instructors[$instructor[1]] = new Instructor($instructor[0],$instructor[1]);
             }
 
@@ -113,9 +124,10 @@ class Main {
 
 $main = new Main();
 
-// declare variables for getting objects
+// declaring variables for getting objects
 $Students = $main->getStudents();
 $Courses = $main->getCourses();
 $Instructors = $main->getInstructors();
+$Grades = $main->getGrades();
 
 ?>

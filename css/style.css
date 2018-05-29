@@ -2,14 +2,6 @@
  *  Martine Jacobsen
  *  Stud.nr: 141715
 **/
-
-/** CONTENT **
-        - General
-        - Header + nav
-        - General appearance
-*/
-
-/* GENERAL */
 html,
 body {
     font-family: 'Raleway', sans-serif;
@@ -58,36 +50,6 @@ a:focus {
     color: #3D3D3D;
 }
 
-/* TABLE */
-.table {
-    background-color: #FFF;
-}
-thead th {
-    font-weight: 600;
-}
-.table thead th {
-    border-top: 0;
-    border-bottom-color: #3D3D3D;
-}
-tbody {
-    position: relative;
-}
-th {
-    font-weight: 400;
-}
-tbody tr {
-    z-index: 1;
-    transition: color .25s ease, background-color .25s ease;
-}
-tbody tr th {
-    z-index: 2;
-}
-tbody tr:hover {
-    color: #FFF;
-    cursor: pointer;
-    background: #246F64;
-}
-
 /* GENERAL APPEARANCE */
 .uppercase {
     text-transform: uppercase;
@@ -101,6 +63,9 @@ tbody tr:hover {
 /* PADDING STYLES */
 .p-t-2 {
     padding-top: 2rem;
+}
+.p-b-2 {
+    padding-bottom: 2rem;
 }
 
 /* TABLES */
@@ -180,4 +145,28 @@ tbody tr:hover {
 #instructors-table .table-row {
     padding: .75rem;
     border-top: 2px solid #EDEDED;
+}
+/* upload table */
+.upload-table {
+    background-color: #FFF;
+}
+.upload-table .header-row {
+    padding: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 2px solid #3D3D3D;
+}
+#form-wrapper {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.upload-table .table-row {
+    padding: .75rem;
+    border-top: 2px solid #EDEDED;
+}
+.success {
+    color: #246F64 !important;
+}
+.error {
+    color: #851310 !important;
 }

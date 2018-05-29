@@ -35,7 +35,7 @@ include ('header.php');
                 return $a->getGPA() < $b->getGPA();
                 });
 
-                foreach ($Students as $Student) :
+                foreach ($Students as $Student) : // iterate over $Student object, returning current student
 
                     $id = $Student->getStudentNr();
 
@@ -64,7 +64,7 @@ include ('header.php');
                         </div>
                     </div>
 
-                    <?php foreach ($Student->getGrades() as $Grade) : ?>
+                    <?php foreach ($Student->getGrades() as $Grade) : // iterate over Grade objects for current student, returning current grade ?>
 
                         <div class="col-12 grade-row">
                             <div class="row">

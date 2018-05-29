@@ -44,9 +44,13 @@
                     </div>
 
                 </div>
+                
             <?php endforeach; ?>
+
         </div>
+
     </div>
+
 </main>
 
 <?php include ('footer.php'); ?>

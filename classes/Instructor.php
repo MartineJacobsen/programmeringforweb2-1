@@ -16,12 +16,12 @@
 
         }
 
-        // method for getting student number
+        // method for getting course code for instructor
         public function get_CourseCode() {
             return $this->courseCode;
         }
 
-        // method for getting name
+        // method for getting instructor name
         public function get_InstructorName() {
             return $this->instructorName;
         }

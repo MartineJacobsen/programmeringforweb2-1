@@ -7,11 +7,11 @@
 
     class Grade {
 
-        private $studentno, $courseno, $grade;
+        private $studentno, $courseno, $grade, $course;
 
         public function __construct($studentno, $courseno, $grade) {
 
-            $this->studentno = $studentno;
+            $this->studentno = intVal($studentno);
             $this->courseno  = $courseno;
             $this->grade     = $grade;
 
@@ -48,6 +48,7 @@
             return $this->course;
         }
 
+        // function for calculation gradepoints
         public function getGradepoints() {
 
             $credit = $this->getCourse()->getNumberofCredits();

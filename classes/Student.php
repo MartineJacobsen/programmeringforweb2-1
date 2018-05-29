@@ -18,22 +18,22 @@
 
         }
 
-        // method for getting student number
+        // method for getting student's student number
         public function getStudentNr() {
             return $this->student_nr;
         }
 
-        // method for getting name
+        // method for getting student's name
         public function getName() {
             return $this->name;
         }
 
-        // method for getting surname
+        // method for getting student's surname
         public function getSurname() {
             return $this->surname;
         }
 
-        // method for getting birthdate
+        // method for getting student's birthdate
         public function getBirthdate() {
             return $this->birthdate;
         }
@@ -48,7 +48,7 @@
             return $this->grades;
         }
 
-        // method for getting courses completed
+        // method for getting number of courses completed
         public function getCoursesCompleted() {
 
             $courses_completed = 0;
@@ -64,7 +64,7 @@
 
         }
 
-        // method for getting courses completed
+        // method for getting number of courses failed
         public function getCoursesFailed() {
             return count($this->grades) - $this->getCoursesCompleted();
         }
@@ -75,7 +75,7 @@
             $tot_gradepoints    = 0;
             $total_credits      = 0;
 
-            // check if it has value (for new students with no grades registered)
+            // check if student has grade
             if ($this->grades != NULL ) {
                 foreach ($this->grades as $grade) {
                     $credit = $grade->getCourse()->getNumberofCredits();
@@ -92,7 +92,7 @@
 
         }
 
-        // method for calculating and returning each student's status
+        // method for calculating and returning student's status
         public function getStatus() {
 
             $gpa = $this->getGPA();

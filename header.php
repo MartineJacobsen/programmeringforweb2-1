@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<?php require_once ('main.php'); ?>
+<?php
+
+/*
+*  Martine Jacobsen
+*  Stud.nr: 141715
+**/
+
+require_once ('main.php');
+
+?>
 <html lang="en">
     <head>
         <meta charset="utf-8">
